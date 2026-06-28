@@ -2,7 +2,7 @@
   "name": "main-panorama-suite",
   "private": true,
   "scripts": {
-    "build": "python3 scripts/build.py",
+    "build:images": "python3 scripts/build.py",
     "preview": "python3 -m http.server 8080"
   }
 }
