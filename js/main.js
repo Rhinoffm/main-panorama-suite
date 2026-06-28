@@ -66,7 +66,9 @@ function openLB(i) {
 
 function closeLB() {
   document.getElementById("lb").classList.remove("open");
-  document.body.style.overflow = "";
+  if (!document.body.classList.contains("nav-open") && !document.querySelector(".aus-modal-bg.open")) {
+    document.body.style.overflow = "";
+  }
 }
 
 function lbNav(d) {
@@ -259,16 +261,54 @@ function openAusModal(id) {
 function closeAusModalById(id) {
   var m = document.getElementById(id);
   if (m) m.classList.remove("open");
-  document.body.style.overflow = "";
+  if (!document.getElementById("lb").classList.contains("open") && !document.body.classList.contains("nav-open")) {
+    document.body.style.overflow = "";
+  }
 }
 
 function closeAllAusModals() {
   document.querySelectorAll(".aus-modal-bg.open").forEach(function (m) {
     m.classList.remove("open");
   });
-  if (!document.getElementById("lb").classList.contains("open")) {
+  if (!document.getElementById("lb").classList.contains("open") && !document.body.classList.contains("nav-open")) {
     document.body.style.overflow = "";
   }
+}
+
+function closeNav() {
+  var nav = document.getElementById("mobile-nav");
+  var toggle = document.querySelector(".nav-toggle");
+  if (!nav) return;
+  nav.classList.remove("open");
+  nav.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("nav-open");
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", lang === "de" ? "Menü öffnen" : "Open menu");
+  }
+  if (!document.getElementById("lb").classList.contains("open") && !document.querySelector(".aus-modal-bg.open")) {
+    document.body.style.overflow = "";
+  }
+}
+
+function openNav() {
+  var nav = document.getElementById("mobile-nav");
+  var toggle = document.querySelector(".nav-toggle");
+  if (!nav) return;
+  nav.classList.add("open");
+  nav.setAttribute("aria-hidden", "false");
+  document.body.classList.add("nav-open");
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", lang === "de" ? "Menü schließen" : "Close menu");
+  }
+  document.body.style.overflow = "hidden";
+}
+
+function toggleNav() {
+  var nav = document.getElementById("mobile-nav");
+  if (nav && nav.classList.contains("open")) closeNav();
+  else openNav();
 }
 
 function loadMap() {
@@ -305,9 +345,20 @@ function bindEvents() {
   document.querySelectorAll("[data-scroll]").forEach(function (el) {
     el.addEventListener("click", function (e) {
       e.stopPropagation();
+      closeNav();
       scroll2(el.getAttribute("data-scroll"));
     });
   });
+
+  var navToggle = document.querySelector(".nav-toggle");
+  if (navToggle) navToggle.addEventListener("click", toggleNav);
+
+  var mobileNav = document.getElementById("mobile-nav");
+  if (mobileNav) {
+    mobileNav.addEventListener("click", function (e) {
+      if (e.target === mobileNav) closeNav();
+    });
+  }
 
   var hero = document.getElementById("hero");
   if (hero) {
@@ -348,7 +399,9 @@ function bindEvents() {
     bg.addEventListener("click", function (e) {
       if (e.target === bg) {
         bg.classList.remove("open");
-        document.body.style.overflow = "";
+        if (!document.getElementById("lb").classList.contains("open") && !document.body.classList.contains("nav-open")) {
+          document.body.style.overflow = "";
+        }
       }
     });
   });
@@ -380,6 +433,7 @@ function bindEvents() {
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
+      closeNav();
       closeLB();
       closeAllAusModals();
     }

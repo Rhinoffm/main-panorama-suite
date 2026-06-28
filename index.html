@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://www.mainblick-suite.de/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Main Panorama Suite – Ferienwohnung Freudenberg am Main | mainblick-suite.de</title>
-<link rel="preload" href="images/hero.jpg" as="image" fetchpriority="high">
+<link rel="preload" href="images/hero.avif" as="image" type="image/avif" fetchpriority="high">
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
@@ -167,6 +167,11 @@
       Main Panorama Suite
       <small>mainblick-suite.de</small>
     </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Sprache / Language">
         <button class="lbtn on" id="btn-de" type="button">DE</button>
@@ -179,10 +184,22 @@
   </div>
 </nav>
 
+<div class="mobile-nav-bg" id="mobile-nav" aria-hidden="true">
+  <nav class="mobile-nav-panel" aria-label="Seitennavigation">
+    <button type="button" class="mobile-nav-link" data-scroll="about" data-de="Die Suite" data-en="The Suite">Die Suite</button>
+    <button type="button" class="mobile-nav-link" data-scroll="ausst" data-de="Ausstattung" data-en="Amenities">Ausstattung</button>
+    <button type="button" class="mobile-nav-link" data-scroll="lage" data-de="Lage &amp; Karte" data-en="Location">Lage &amp; Karte</button>
+    <button type="button" class="mobile-nav-link" data-scroll="aus" data-de="Ausflugsziele" data-en="Day Trips">Ausflugsziele</button>
+    <button type="button" class="mobile-nav-link" data-scroll="rev" data-de="Bewertungen" data-en="Reviews">Bewertungen</button>
+    <button type="button" class="mobile-nav-link" data-scroll="faq" data-de="FAQ" data-en="FAQ">FAQ</button>
+    <button type="button" class="mobile-nav-link mobile-nav-link-cta" data-scroll="anf" data-de="Jetzt anfragen" data-en="Enquire Now">Jetzt anfragen</button>
+  </nav>
+</div>
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
-    <img src="images/hero.jpg" width="2200" height="1716" decoding="async" alt="Freudenburg und Main bei Freudenberg am Main" fetchpriority="high">
+    <img src="images/hero.jpg" srcset="images/hero.avif 1600w, images/hero.jpg 2200w" sizes="100vw" width="2200" height="1716" decoding="async" alt="Freudenburg und Main bei Freudenberg am Main" fetchpriority="high">
   </div>
   <div class="hero-ov"></div>
   <div class="hero-c">
