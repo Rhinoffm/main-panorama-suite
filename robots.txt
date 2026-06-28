@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mainblick-suite.de/sitemap.xml
+Sitemap: https://www.mainblick-suite.de/sitemap.xml

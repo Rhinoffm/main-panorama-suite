@@ -12,6 +12,18 @@ var lbImages = [
   "images/cards/bad.avif",
   "images/cards/schlaf.avif",
 ];
+var lbAlts = [
+  "Freudenburg und Main bei Freudenberg am Main",
+  "Essbereich mit Mainblick",
+  "Schlafzimmer",
+  "Badezimmer",
+  "Küche",
+  "Wohnzimmer Main Panorama Suite mit Mainblick Freudenberg",
+  "Wohnzimmer mit TV und Designer-Beleuchtung",
+  "Vollausgestattete Küche mit Airfryer und Nespresso",
+  "Luxusbadezimmer mit Marmor und Walk-in Dusche",
+  "Schlafzimmer mit Queensize-Bett und TV",
+];
 var lbIdx = 0;
 
 var MAP_SRC =
@@ -45,7 +57,9 @@ var faq = {
 
 function openLB(i) {
   lbIdx = i;
-  document.getElementById("lb-img").src = lbImages[i];
+  var img = document.getElementById("lb-img");
+  img.src = lbImages[i];
+  img.alt = lbAlts[i];
   document.getElementById("lb").classList.add("open");
   document.body.style.overflow = "hidden";
 }
@@ -57,7 +71,9 @@ function closeLB() {
 
 function lbNav(d) {
   lbIdx = (lbIdx + d + lbImages.length) % lbImages.length;
-  document.getElementById("lb-img").src = lbImages[lbIdx];
+  var img = document.getElementById("lb-img");
+  img.src = lbImages[lbIdx];
+  img.alt = lbAlts[lbIdx];
 }
 
 function buildFAQ(l) {

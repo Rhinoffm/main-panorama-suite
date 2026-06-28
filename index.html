@@ -4,17 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Moderne Ferienwohnung mit Mainblick in Freudenberg am Main. 44m², bis zu 4 Personen, kostenloser Parkplatz, Nespresso, Netflix. Ideal für Urlaub und Geschäftsreisende.">
-<meta name="keywords" content="Ferienwohnung Freudenberg am Main, Mainblick Suite, Urlaub Main, Wertheim Village, Ferienwohnung Main Panorama">
 <meta property="og:title" content="Main Panorama Suite – Ferienwohnung Freudenberg am Main">
 <meta property="og:description" content="Frisch renovierte Suite mit Mainblick. Bis zu 4 Personen, Queensize-Bett, Netflix, Nespresso, kostenloser Parkplatz.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://mainblick-suite.de">
-<meta property="og:image" content="https://mainblick-suite.de/images/gebaeude.avif">
+<meta property="og:url" content="https://www.mainblick-suite.de/">
+<meta property="og:site_name" content="Main Panorama Suite">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://www.mainblick-suite.de/images/hero.jpg">
 <meta property="og:image:alt" content="Main Panorama Suite – Ferienwohnung Freudenberg am Main">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Main Panorama Suite – Ferienwohnung Freudenberg am Main">
 <meta name="twitter:description" content="Frisch renovierte Suite mit Mainblick. Bis zu 4 Personen, Queensize-Bett, Netflix, Nespresso, kostenloser Parkplatz.">
-<meta name="twitter:image" content="https://mainblick-suite.de/images/gebaeude.avif">
+<meta name="twitter:image" content="https://www.mainblick-suite.de/images/hero.jpg">
+<link rel="canonical" href="https://www.mainblick-suite.de/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Main Panorama Suite – Ferienwohnung Freudenberg am Main | mainblick-suite.de</title>
 <link rel="preload" href="images/hero.jpg" as="image" fetchpriority="high">
@@ -23,38 +25,135 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "VacationRental",
-  "name": "Main Panorama Suite",
-  "description": "Moderne Ferienwohnung mit Mainblick in Freudenberg am Main. 44 m², bis zu 4 Personen, kostenloser Parkplatz.",
-  "url": "https://mainblick-suite.de",
-  "telephone": "+491702829765",
-  "email": "info@hola-diamond.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Hauptstraße 97",
-    "addressLocality": "Freudenberg am Main",
-    "postalCode": "97896",
-    "addressCountry": "DE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 49.7569,
-    "longitude": 9.1750
-  },
-  "numberOfRooms": 1,
-  "occupancy": {
-    "@type": "QuantitativeValue",
-    "maxValue": 4
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "9.2",
-    "bestRating": "10",
-    "ratingCount": "6"
-  },
-  "amenityFeature": [
-    {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true}
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mainblick-suite.de/#website",
+      "url": "https://www.mainblick-suite.de/",
+      "name": "Main Panorama Suite",
+      "description": "Ferienwohnung mit Mainblick in Freudenberg am Main",
+      "publisher": {
+        "@type": "Organization",
+        "name": "HoLa Diamond GmbH",
+        "url": "https://www.mainblick-suite.de/"
+      },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "VacationRental",
+      "@id": "https://www.mainblick-suite.de/#vacationrental",
+      "name": "Main Panorama Suite",
+      "description": "Moderne Ferienwohnung mit Mainblick in Freudenberg am Main. 44 m², bis zu 4 Personen, kostenloser Parkplatz.",
+      "url": "https://www.mainblick-suite.de/",
+      "telephone": "+491702829765",
+      "email": "info@hola-diamond.com",
+      "image": [
+        "https://www.mainblick-suite.de/images/hero.jpg",
+        "https://www.mainblick-suite.de/images/gebaeude.avif"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hauptstraße 97",
+        "addressLocality": "Freudenberg am Main",
+        "postalCode": "97896",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.7411,
+        "longitude": 9.3218
+      },
+      "numberOfRooms": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 4
+      },
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true}
+      ],
+      "sameAs": [
+        "https://www.booking.com/hotel/de/main-panorama-suite-freudenberg.html"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.mainblick-suite.de/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wann sind Check-in und Check-out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check-in ist ab 14:00 Uhr möglich, Check-out bis 11:00 Uhr. Kontaktloser Check-in ist auf Wunsch möglich – Schlüsselübergabe flexibel nach Absprache."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es kostenlose Parkplätze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, kostenfreie Parkplätze direkt an der Mainpromenade sind inklusive – kein Parkplatzsuchen, kein Stress."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für wie viele Personen ist die Suite geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Suite bietet Platz für bis zu 4 Personen: 2 im Queensize-Bett im Schlafzimmer und 2 weitere auf dem Schlafsofa im Wohnbereich."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind Haustiere erlaubt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leider sind Haustiere in der Main Panorama Suite nicht gestattet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist Rauchen in der Unterkunft erlaubt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, die gesamte Unterkunft ist rauchfrei. Wir bitten darum, dies zu respektieren."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es einen Mindeststay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, Kurzaufenthalte ab 1 Nacht sind herzlich willkommen. Auch für Homeoffice-Wochen oder längere Aufenthalte sind wir gern Ihr Zuhause."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich auch direkt buchen (ohne Booking.com)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Nutzen Sie unser Anfrageformular oder rufen Sie uns direkt an. Direktbuchungen sind ausdrücklich möglich und willkommen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Streaming-Dienste sind verfügbar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Netflix und weitere Streaming-Dienste stehen bereit. Highspeed-WLAN ist kostenlos im gesamten Apartment verfügbar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist die Suite für Geschäftsreisende geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolut. Highspeed-WLAN, schallisolierte Räume, flexibler Check-in und kostenloser Parkplatz machen die Suite zur idealen Geschäftsunterkunft."
+          }
+        }
+      ]
+    }
   ]
 }
 </script>
@@ -515,7 +614,7 @@
         <h3 data-de="Hervorragend" data-en="Exceptional">Hervorragend</h3>
         <p data-de="Bewertet auf Booking.com · Kostenlose Stornierung verfügbar" data-en="Rated on Booking.com · Free cancellation available">Bewertet auf Booking.com · Kostenlose Stornierung verfügbar</p>
       </div>
-      <a href="https://www.booking.com/searchresults.de.html?ss=Freudenberg+am+Main&checkin=&checkout=&group_adults=2" target="_blank" rel="noopener" class="btn-booking">
+      <a href="https://www.booking.com/hotel/de/main-panorama-suite-freudenberg.html" target="_blank" rel="noopener" class="btn-booking">
         <span data-de="Auf Booking.com ansehen" data-en="View on Booking.com">Auf Booking.com ansehen</span> ↗
       </a>
     </div>
@@ -577,11 +676,10 @@
 
     </div>
     <div class="rev-cta">
-      <a href="https://www.booking.com/searchresults.de.html?ss=Freudenberg+am+Main&checkin=&checkout=&group_adults=2" target="_blank" rel="noopener" class="btn-booking btn-booking-lg">
+      <a href="https://www.booking.com/hotel/de/main-panorama-suite-freudenberg.html" target="_blank" rel="noopener" class="btn-booking btn-booking-lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         <span data-de="Alle Bewertungen auf Booking.com lesen" data-en="Read all reviews on Booking.com">Alle Bewertungen auf Booking.com lesen</span>
       </a>
-      <p class="rev-note" data-de="* Booking.com-Link bitte mit der echten Profil-URL ersetzen" data-en="* Please replace Booking.com link with the actual profile URL">* Booking.com-Link bitte mit der echten Profil-URL ersetzen</p>
     </div>
   </div>
 </section>
@@ -674,7 +772,7 @@
       <div class="fc">
         <h4 data-de="Kontakt" data-en="Contact">Kontakt</h4>
         <ul>
-          <li>Michael Grittmann</li>
+          <li>HoLa Diamond GmbH</li>
           <li><a href="tel:+491702829765">+49 170 2829765</a></li>
           <li><a href="mailto:info@hola-diamond.com" style="word-break:break-all">info@hola-diamond.com</a></li>
           <li>Hauptstraße 97<br>97896 Freudenberg am Main</li>
