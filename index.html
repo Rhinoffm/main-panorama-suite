@@ -174,8 +174,8 @@
     </button>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Sprache / Language">
-        <button class="lbtn on" id="btn-de" type="button">DE</button>
-        <button class="lbtn" id="btn-en" type="button">EN</button>
+        <button class="lbtn on" id="btn-de" type="button" aria-label="Deutsch">🇩🇪</button>
+        <button class="lbtn" id="btn-en" type="button" aria-label="English">🇬🇧</button>
       </div>
       <button class="btn-nav" type="button" data-scroll="anf">
         <span data-de="Anfragen" data-en="Enquire">Anfragen</span>
@@ -743,6 +743,7 @@
             <label for="f-website">Website</label>
             <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off">
           </div>
+          <input type="hidden" name="formLoadedAt" id="f-loaded-at" value="">
           <div class="frow">
             <div class="fg"><label data-de="Vorname *" data-en="First Name *">Vorname *</label><input type="text" name="vorname" placeholder="Max" required></div>
             <div class="fg"><label data-de="Nachname *" data-en="Last Name *">Nachname *</label><input type="text" name="nachname" placeholder="Mustermann" required></div>
@@ -761,6 +762,8 @@
               <option value="2">2 Personen</option>
               <option value="3">3 Personen</option>
               <option value="4">4 Personen</option>
+              <option value="5">5 Personen</option>
+              <option value="6">6 Personen</option>
             </select>
           </div>
           <div class="fg"><label data-de="Nachricht (optional)" data-en="Message (optional)">Nachricht (optional)</label><textarea name="msg" id="f-msg" data-ph-de="Fragen, Sonderwünsche, geplante Ankunftszeit …" data-ph-en="Questions, special requests, planned arrival time …"></textarea></div>
@@ -769,7 +772,7 @@
             <label for="prv"><span data-de="Ich stimme der Verarbeitung meiner Daten gemäß der " data-en="I agree to the processing of my data per the ">Ich stimme der Verarbeitung meiner Daten gemäß der </span><a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a><span> zu.</span></label>
           </div>
           <button type="submit" class="btn-sub" id="sbtn"><span data-de="Anfrage senden" data-en="Send Enquiry">Anfrage senden</span></button>
-          <p id="fsuccess">✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden.</p>
+          <p id="fsuccess">✓ Vielen Dank. Ihre unverbindliche Anfrage wurde versendet.</p>
           <p id="ferror"></p>
         </form>
       </div>

@@ -131,23 +131,23 @@ function setLang(l) {
   if (s) {
     var o =
       l === "de"
-        ? ["Bitte wählen …", "1 Person", "2 Personen", "3 Personen", "4 Personen"]
-        : ["Please select …", "1 guest", "2 guests", "3 guests", "4 guests"];
+        ? ["Bitte wählen …", "1 Person", "2 Personen", "3 Personen", "4 Personen", "5 Personen", "6 Personen"]
+        : ["Please select …", "1 guest", "2 guests", "3 guests", "4 guests", "5 guests", "6 guests"];
     for (var i = 0; i < s.options.length; i++) s.options[i].text = o[i];
   }
   var ok = document.getElementById("fsuccess");
   if (ok && ok.style.display !== "block") {
     ok.textContent =
       l === "de"
-        ? "✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden."
-        : "✓ Thank you! We'll be in touch within 24 hours.";
+        ? "✓ Vielen Dank. Ihre unverbindliche Anfrage wurde versendet."
+        : "✓ Thank you. Your non-binding enquiry has been sent.";
   }
   var err = document.getElementById("ferror");
   if (err && err.style.display === "block") {
     err.textContent =
       l === "de"
-        ? "Senden fehlgeschlagen. Bitte erneut versuchen oder uns anrufen."
-        : "Sending failed. Please try again or call us.";
+        ? "Ihre Anfrage konnte gerade nicht versendet werden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns per E-Mail."
+        : "Your enquiry could not be sent right now. Please try again later or contact us by email.";
   }
   var btn = document.getElementById("sbtn");
   if (btn && !btn.disabled) {
@@ -170,12 +170,18 @@ function setFormMessage(type, message) {
   if (type === "error") err.textContent = message;
 }
 
+function initFormLoadedAt() {
+  var el = document.getElementById("f-loaded-at");
+  if (el) el.value = String(Date.now());
+}
+
 function sendForm(e) {
   e.preventDefault();
   var form = document.getElementById("iform");
   var btn = document.getElementById("sbtn");
   var btnSpan = btn.querySelector("span");
   var originalLabel = btnSpan ? btnSpan.textContent : "";
+  var submissionId = crypto.randomUUID();
 
   btn.disabled = true;
   if (btnSpan) btnSpan.textContent = lang === "de" ? "Wird gesendet …" : "Sending …";
@@ -192,7 +198,18 @@ function sendForm(e) {
     pers: d.get("pers"),
     msg: d.get("msg"),
     website: d.get("website"),
+    formLoadedAt: Number(d.get("formLoadedAt")),
+    submissionId: submissionId,
   };
+
+  var successMsg =
+    lang === "de"
+      ? "✓ Vielen Dank. Ihre unverbindliche Anfrage wurde versendet."
+      : "✓ Thank you. Your non-binding enquiry has been sent.";
+  var errorMsg =
+    lang === "de"
+      ? "Ihre Anfrage konnte gerade nicht versendet werden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns per E-Mail."
+      : "Your enquiry could not be sent right now. Please try again later or contact us by email.";
 
   fetch("/api/contact", {
     method: "POST",
@@ -210,33 +227,19 @@ function sendForm(e) {
         });
     })
     .then(function (result) {
-      if (result.ok && result.body.ok) {
-        setFormMessage(
-          "success",
-          lang === "de"
-            ? "✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden."
-            : "✓ Thank you! We'll be in touch within 24 hours."
-        );
+      if (result.ok && result.body.success) {
+        setFormMessage("success", successMsg);
         form.reset();
         initDateFields();
+        initFormLoadedAt();
       } else {
-        var msg =
-          result.body.error ||
-          (lang === "de"
-            ? "Senden fehlgeschlagen. Bitte erneut versuchen oder uns anrufen."
-            : "Sending failed. Please try again or call us.");
-        setFormMessage("error", msg);
-        btn.disabled = false;
-        if (btnSpan) btnSpan.textContent = originalLabel;
+        setFormMessage("error", errorMsg);
       }
     })
     .catch(function () {
-      setFormMessage(
-        "error",
-        lang === "de"
-          ? "Senden fehlgeschlagen. Bitte erneut versuchen oder uns anrufen."
-          : "Sending failed. Please try again or call us."
-      );
+      setFormMessage("error", errorMsg);
+    })
+    .finally(function () {
       btn.disabled = false;
       if (btnSpan) btnSpan.textContent = originalLabel;
     });
@@ -462,7 +465,22 @@ function bindEvents() {
   }
 }
 
+function initFactsMarquee() {
+  if (window.innerWidth > 900) return;
+  var wrap = document.querySelector(".facts-wrap");
+  if (!wrap) return;
+  var pills = Array.from(wrap.querySelectorAll(".pill"));
+  pills.forEach(function (pill) {
+    var clone = pill.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    wrap.appendChild(clone);
+  });
+  wrap.classList.add("marquee");
+}
+
 buildFAQ("de");
 initDateFields();
+initFormLoadedAt();
 initMap();
 bindEvents();
+initFactsMarquee();
